@@ -1,13 +1,38 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { Header } from "@/components/layout/Header";
+import { Footer } from "@/components/layout/Footer";
+import { HeroSection } from "@/components/home/HeroSection";
+import { FourPillarsSection } from "@/components/home/FourPillarsSection";
+import { ClientSegmentsSection } from "@/components/home/ClientSegmentsSection";
+import { GlobalReachSection } from "@/components/home/GlobalReachSection";
+import { TrustBuildersSection } from "@/components/home/TrustBuildersSection";
+import { FeaturedBlogSection } from "@/components/home/FeaturedBlogSection";
+import { CTASection } from "@/components/home/CTASection";
+import { Helmet } from "react-helmet-async";
 
 const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center bg-background">
-      <div className="text-center">
-        <h1 className="mb-4 text-4xl font-bold">Welcome to Your Blank App</h1>
-        <p className="text-xl text-muted-foreground">Start building your amazing project here!</p>
-      </div>
-    </div>
+    <>
+      <Helmet>
+        <title>Global Visa, Trade, Talent & Marketplace Platform | Afrinexa Global Limited</title>
+        <meta name="description" content="Afrinexa Global Limited connects Africa to the world through visa assistance, trade & investment, global talent exchange, and cross-border marketplaces." />
+        <meta name="keywords" content="Visa Assistance Africa, Study Abroad, Work Abroad, Trade and Investment Africa, Talent Hub Africa, Global Marketplace" />
+        <meta property="og:title" content="Afrinexa Global Limited - Bridging Africa and the World" />
+        <meta property="og:description" content="Expert visa assistance, trade facilitation, talent exchange, and marketplace solutions connecting Africa to global opportunities." />
+        <meta property="og:type" content="website" />
+        <link rel="canonical" href="https://afrinexa.com" />
+      </Helmet>
+      <Header />
+      <main>
+        <HeroSection />
+        <FourPillarsSection />
+        <ClientSegmentsSection />
+        <GlobalReachSection />
+        <TrustBuildersSection />
+        <FeaturedBlogSection />
+        <CTASection />
+      </main>
+      <Footer />
+    </>
   );
 };
 
