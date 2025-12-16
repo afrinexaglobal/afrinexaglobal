@@ -5,7 +5,6 @@ import { Button } from "@/components/ui/button";
 const footerLinks = {
   services: [
     { name: "Visa Assistance", href: "/services/visa-assistance" },
-    { name: "Work Abroad", href: "/services/work-abroad" },
     { name: "Trade & Investment", href: "/services/trade-investment" },
     { name: "Talent Hub", href: "/services/talent-hub" },
     { name: "Marketplace", href: "/services/marketplace" },
@@ -14,13 +13,11 @@ const footerLinks = {
     { name: "About Us", href: "/about" },
     { name: "Success Stories", href: "/success-stories" },
     { name: "Blog & Insights", href: "/blog" },
-    { name: "Countries", href: "/countries" },
-    { name: "Resources", href: "/resources" },
   ],
   support: [
     { name: "Contact Us", href: "/contact" },
     { name: "Client Portal", href: "/client-portal" },
-    { name: "FAQs", href: "/resources#faq" },
+    { name: "FAQs", href: "/contact#faq" },
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
   ],

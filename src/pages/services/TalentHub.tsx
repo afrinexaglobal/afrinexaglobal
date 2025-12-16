@@ -53,69 +53,56 @@ const TalentHub = () => {
           </div>
         </section>
 
-        {/* Benefits */}
+        {/* 5. Talent Hub - Detailed Sections */}
         <section className="py-24 bg-background">
           <div className="container-custom">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Why Join Afrinexa Talent Hub?
-              </h2>
-              <p className="text-lg text-muted-foreground">
-                We don't just list your profile - we actively promote your skills to employers worldwide.
-              </p>
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">5. Talent Hub</h2>
+              <p className="text-lg text-muted-foreground">Connecting talent and employers across Africa and the world.</p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {benefits.map((benefit, index) => (
-                <div
-                  key={benefit.title}
-                  className="text-center p-8 rounded-2xl bg-card border border-border hover:border-gold/30 hover-lift"
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-6">
-                    <benefit.icon className="w-8 h-8 text-gold" />
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-3">
-                    {benefit.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm">{benefit.description}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* How It Works */}
-        <section className="py-24 bg-muted/30">
-          <div className="container-custom">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                How It Works
-              </h2>
+            {/* 5.1 For Job Seekers */}
+            <div className="mb-10 p-8 rounded-2xl bg-card border border-border">
+              <h3 className="font-display text-2xl font-bold text-foreground mb-3">5.1 For Job Seekers</h3>
+              <p className="text-muted-foreground mb-4">Tools and pathways to showcase your skills and access opportunities.</p>
+              <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                <li>Create Talent Profile</li>
+                <li>Upload CV</li>
+                <li>Job Listings (By Country &amp; Sector)</li>
+                <li>Skill Development Programs</li>
+              </ul>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-8">
-              {[
-                { step: "1", title: "Create Profile", description: "Sign up and build your professional profile with your skills and experience." },
-                { step: "2", title: "Get Verified", description: "Our team verifies your credentials and enhances your profile visibility." },
-                { step: "3", title: "Get Matched", description: "Receive job matches and apply to opportunities that fit your goals." },
-              ].map((item) => (
-                <div key={item.step} className="relative p-8 rounded-2xl bg-card border border-border">
-                  <div className="absolute -top-4 left-8 w-8 h-8 rounded-full bg-gold flex items-center justify-center text-primary font-bold">
-                    {item.step}
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-foreground mb-3 mt-4">
-                    {item.title}
-                  </h3>
-                  <p className="text-muted-foreground">{item.description}</p>
-                </div>
-              ))}
+            {/* 5.2 For Employers */}
+            <div className="mb-10 p-8 rounded-2xl bg-card border border-border">
+              <h3 className="font-display text-2xl font-bold text-foreground mb-3">5.2 For Employers</h3>
+              <p className="text-muted-foreground mb-4">End-to-end hiring solutions tailored for international employers.</p>
+              <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                <li>Post a Job</li>
+                <li>Talent Search</li>
+                <li>Recruitment Outsourcing</li>
+                <li>Compliance &amp; Visa Advisory</li>
+              </ul>
             </div>
 
-            <div className="text-center mt-12">
+            {/* 5.3 Talent Categories */}
+            <div className="mb-10 p-8 rounded-2xl bg-card border border-border">
+              <h3 className="font-display text-2xl font-bold text-foreground mb-3">5.3 Talent Categories</h3>
+              <p className="text-muted-foreground mb-4">Browse talent by sector and expertise.</p>
+              <ul className="grid grid-cols-2 md:grid-cols-3 gap-2 text-muted-foreground list-none pl-0">
+                <li>- IT &amp; Tech</li>
+                <li>- Healthcare</li>
+                <li>- Education</li>
+                <li>- Engineering</li>
+                <li>- Hospitality</li>
+                <li>- Creative &amp; Media</li>
+              </ul>
+            </div>
+
+            {/* CTA */}
+            <div className="text-center mt-6">
               <Link to="/contact">
-                <Button variant="gold" size="xl">
-                  Join Now <ArrowRight className="w-5 h-5" />
-                </Button>
+                <Button variant="heroGold" size="xl">Join Talent Hub <ArrowRight className="w-5 h-5" /></Button>
               </Link>
             </div>
           </div>

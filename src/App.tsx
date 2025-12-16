@@ -12,8 +12,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
-import Countries from "./pages/Countries";
-import Resources from "./pages/Resources";
 import SuccessStories from "./pages/SuccessStories";
 import ClientPortal from "./pages/ClientPortal";
 import AdminLogin from "./pages/AdminLogin";
@@ -24,6 +22,7 @@ import WorkAbroad from "./pages/services/WorkAbroad";
 import TradeInvestment from "./pages/services/TradeInvestment";
 import TalentHub from "./pages/services/TalentHub";
 import Marketplace from "./pages/services/Marketplace";
+import VisaApplication from "./pages/services/VisaApplication";
 
 const queryClient = new QueryClient();
 
@@ -40,14 +39,15 @@ const App = () => (
             
             {/* Services */}
             <Route path="/services/visa-assistance" element={<VisaAssistance />} />
+            <Route path="/services/visa-application" element={<VisaApplication />} />
             <Route path="/services/work-abroad" element={<WorkAbroad />} />
             <Route path="/services/trade-investment" element={<TradeInvestment />} />
             <Route path="/services/talent-hub" element={<TalentHub />} />
             <Route path="/services/marketplace" element={<Marketplace />} />
             
             {/* Main Pages */}
-            <Route path="/countries" element={<Countries />} />
-            <Route path="/resources" element={<Resources />} />
+            
+            
             <Route path="/success-stories" element={<SuccessStories />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />

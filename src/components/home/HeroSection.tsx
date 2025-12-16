@@ -41,7 +41,7 @@ export function HeroSection() {
           <h1 className="font-display text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-primary-foreground mb-6 animate-fade-up" style={{ animationDelay: "0.1s" }}>
             <span className="block">Afrinexa Global</span>
             <span className="block mt-2">
-              <span className="gradient-text">Bridging Africa</span>
+              <span>Bridging Africa</span>
               <span> & the World</span>
             </span>
           </h1>

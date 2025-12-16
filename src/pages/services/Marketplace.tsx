@@ -38,23 +38,28 @@ const Marketplace = () => {
           <div className="container-custom relative z-10">
             <div className="max-w-3xl">
               <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold text-sm font-semibold mb-6">
-                Marketplace
+                6. Marketplace
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
-                Trade <span className="text-gold">Without Borders</span>
+                Marketplace — Buy, Sell & Partner
               </h1>
               <p className="text-xl text-primary-foreground/80 mb-8">
-                Your gateway to cross-border commerce. Connect African products with global markets and access goods from around the world.
+                A multi-channel marketplace connecting digital resources, services, and businesses across Africa and the world.
               </p>
               <div className="flex flex-wrap gap-4">
                 <Link to="/contact">
                   <Button variant="heroGold" size="xl">
-                    <ShoppingBag className="w-5 h-5" /> Start Buying
+                    Buy
                   </Button>
                 </Link>
                 <Link to="/contact">
                   <Button variant="hero" size="xl">
-                    <Store className="w-5 h-5" /> Start Selling
+                    Sell
+                  </Button>
+                </Link>
+                <Link to="/contact">
+                  <Button variant="outline" size="xl">
+                    Partner
                   </Button>
                 </Link>
               </div>
@@ -62,64 +67,95 @@ const Marketplace = () => {
           </div>
         </section>
 
-        {/* Features */}
-        <section className="py-24 bg-background">
+        {/* 6.1 Digital Marketplace */}
+        <section className="py-20 bg-background">
           <div className="container-custom">
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {features.map((feature) => (
-                <div
-                  key={feature.title}
-                  className="text-center p-8 rounded-2xl bg-card border border-border hover:border-gold/30 hover-lift"
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-gold/10 flex items-center justify-center mx-auto mb-6">
-                    <feature.icon className="w-8 h-8 text-gold" />
-                  </div>
-                  <h3 className="font-display text-lg font-bold text-foreground mb-2">
-                    {feature.title}
-                  </h3>
-                  <p className="text-muted-foreground text-sm">{feature.description}</p>
-                </div>
-              ))}
+            <div className="max-w-3xl mx-auto text-center mb-8">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-2">6.1 Digital Marketplace</h2>
+              <p className="text-muted-foreground">Digital products and templates to support migration, applications and learning.</p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Visa-related Documents</h3>
+                <p className="text-sm text-muted-foreground">Prebuilt visa forms, checklists and document bundles.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Templates (SOP, CV, Cover Letters)</h3>
+                <p className="text-sm text-muted-foreground">Professionally written templates tailored for visa and job applications.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">E-books & Guides</h3>
+                <p className="text-sm text-muted-foreground">Practical guides on migration, trade procedures and market entry.</p>
+              </div>
             </div>
           </div>
         </section>
 
-        {/* Categories */}
-        <section className="py-24 bg-muted/30">
+        {/* 6.2 Physical & Service Marketplace */}
+        <section className="py-20 bg-muted/30">
           <div className="container-custom">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Browse Categories
-              </h2>
-              <p className="text-muted-foreground">
-                Discover a wide range of products from verified sellers across the globe.
-              </p>
+            <div className="max-w-3xl mx-auto text-center mb-8">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-2">6.2 Physical & Service Marketplace</h2>
+              <p className="text-muted-foreground">Services and physical products to support travel and events.</p>
             </div>
 
-            <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-              {categories.map((category) => (
-                <div
-                  key={category.name}
-                  className="group p-6 rounded-2xl bg-card border border-border hover:border-gold/30 hover-lift cursor-pointer"
-                >
-                  <Package className="w-10 h-10 text-gold mb-4" />
-                  <h3 className="font-display text-lg font-bold text-foreground mb-2 group-hover:text-gold transition-colors">
-                    {category.name}
-                  </h3>
-                  <p className="text-muted-foreground text-sm">{category.description}</p>
-                </div>
-              ))}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Travel Insurance</h3>
+                <p className="text-sm text-muted-foreground">Compare and buy travel insurance plans for your trip.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Flight Booking</h3>
+                <p className="text-sm text-muted-foreground">Search and book competitive flight options worldwide.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Accommodation Support</h3>
+                <p className="text-sm text-muted-foreground">Assistance with short-term and long-term accommodation.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Event Tickets</h3>
+                <p className="text-sm text-muted-foreground">Buy tickets for conferences, trade shows and local events.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 6.3 Business Marketplace */}
+        <section className="py-20 bg-background">
+          <div className="container-custom">
+            <div className="max-w-3xl mx-auto text-center mb-8">
+              <h2 className="font-display text-2xl font-bold text-foreground mb-2">6.3 Business Marketplace</h2>
+              <p className="text-muted-foreground">Business-focused listings and verified trade services.</p>
             </div>
 
-            <div className="text-center mt-12">
-              <p className="text-muted-foreground mb-6">
-                Marketplace coming soon. Register your interest to be notified at launch!
-              </p>
-              <Link to="/contact">
-                <Button variant="gold" size="xl">
-                  Join Waitlist <ArrowRight className="w-5 h-5" />
-                </Button>
-              </Link>
+            <div className="grid md:grid-cols-3 gap-6">
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Franchise Opportunities</h3>
+                <p className="text-sm text-muted-foreground">Explore franchising and partnership opportunities across regions.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Trade Leads</h3>
+                <p className="text-sm text-muted-foreground">Access verified trade leads and business opportunities.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Verified Suppliers</h3>
+                <p className="text-sm text-muted-foreground">Find vetted suppliers and B2B partners for your business.</p>
+              </div>
+            </div>
+
+            <div className="text-center mt-10">
+              <div className="inline-flex gap-3">
+                <Link to="/contact">
+                  <Button variant="heroGold">Buy</Button>
+                </Link>
+                <Link to="/contact">
+                  <Button variant="hero">Sell</Button>
+                </Link>
+                <Link to="/contact">
+                  <Button variant="outline">Partner</Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

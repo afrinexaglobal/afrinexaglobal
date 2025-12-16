@@ -49,7 +49,7 @@ const TradeInvestment = () => {
           <div className="container-custom relative z-10">
             <div className="max-w-3xl">
               <span className="inline-block px-4 py-2 rounded-full bg-gold/20 text-gold text-sm font-semibold mb-6">
-                Trade & Investment
+                Trade & Investment (Equal Priority Service)
               </span>
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
                 Expand Your Business <span className="text-gold">Globally</span>
@@ -73,41 +73,84 @@ const TradeInvestment = () => {
           </div>
         </section>
 
-        {/* Services */}
+        {/* Services (detailed subsections) */}
         <section className="py-24 bg-background">
           <div className="container-custom">
-            <div className="text-center max-w-3xl mx-auto mb-16">
-              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-6">
-                Our Trade & Investment Services
+            <div className="text-center max-w-3xl mx-auto mb-12">
+              <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-4">
+                Trade & Investment — Subservices
               </h2>
               <p className="text-lg text-muted-foreground">
-                Comprehensive solutions to help your business thrive in the global marketplace.
+                Detailed offerings under Trade Services, Investment Services, and our Africa–Global Trade Corridor.
               </p>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {services.map((service, index) => (
-                <div
-                  key={service.title}
-                  className="group p-8 rounded-2xl bg-card border border-border hover:border-gold/30 hover-lift"
-                >
-                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold to-gold-light flex items-center justify-center mb-6">
-                    <service.icon className="w-8 h-8 text-primary" />
-                  </div>
-                  <h3 className="font-display text-2xl font-bold text-foreground mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-muted-foreground mb-6">{service.description}</p>
-                  <ul className="space-y-3">
-                    {service.features.map((feature) => (
-                      <li key={feature} className="flex items-center gap-3 text-sm">
-                        <CheckCircle className="w-5 h-5 text-gold flex-shrink-0" />
-                        <span className="text-muted-foreground">{feature}</span>
-                      </li>
-                    ))}
+            {/* 4.1 Trade Services */}
+            <div className="mb-12 p-8 rounded-2xl bg-card border border-border">
+              <div className="flex items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold to-gold-light flex items-center justify-center">
+                  <Globe2 className="w-8 h-8 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl font-bold text-foreground mb-2">4.1 Trade Services</h3>
+                  <p className="text-muted-foreground mb-4">Services to facilitate your import/export and trade operations.</p>
+                  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                    <li>Import & Export Facilitation</li>
+                    <li>Supplier & Buyer Matching</li>
+                    <li>International Trade Documentation</li>
+                    <li>Trade Missions & Exhibitions</li>
                   </ul>
                 </div>
-              ))}
+              </div>
+            </div>
+
+            {/* 4.2 Investment Services */}
+            <div className="mb-12 p-8 rounded-2xl bg-card border border-border">
+              <div className="flex items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold to-gold-light flex items-center justify-center">
+                  <TrendingUp className="w-8 h-8 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl font-bold text-foreground mb-2">4.2 Investment Services</h3>
+                  <p className="text-muted-foreground mb-4">Support for investors looking to enter African markets and beyond.</p>
+                  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                    <li>Foreign Direct Investment (FDI) Support</li>
+                    <li>Business Setup Abroad</li>
+                    <li>Joint Ventures</li>
+                    <li>Real Estate Investment (by country)</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* 4.3 Africa–Global Trade Corridor */}
+            <div className="mb-12 p-8 rounded-2xl bg-card border border-border">
+              <div className="flex items-start gap-6">
+                <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-gold to-gold-light flex items-center justify-center">
+                  <Handshake className="w-8 h-8 text-primary" />
+                </div>
+                <div>
+                  <h3 className="font-display text-2xl font-bold text-foreground mb-2">4.3 Africa–Global Trade Corridor</h3>
+                  <p className="text-muted-foreground mb-4">Focused trade lanes connecting Africa with major global regions.</p>
+                  <ul className="list-disc pl-5 space-y-2 text-muted-foreground">
+                    <li>Africa to Europe</li>
+                    <li>Africa to Asia</li>
+                    <li>Africa to Middle East</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+
+            {/* CTA row */}
+            <div className="text-center mt-6">
+              <div className="flex flex-wrap items-center justify-center gap-4">
+                <Link to="/contact">
+                  <Button variant="heroGold" size="xl">Become a Partner <ArrowRight className="w-5 h-5" /></Button>
+                </Link>
+                <Link to="/contact">
+                  <Button variant="hero" size="xl">Invest with Afrinexa</Button>
+                </Link>
+              </div>
             </div>
           </div>
         </section>

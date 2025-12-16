@@ -100,19 +100,23 @@ const Contact = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-foreground mb-2">Service Interest</label>
+                        <label className="block text-sm font-medium text-foreground mb-2">Interest</label>
                       <select
                         className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-gold"
                         value={formData.service}
                         onChange={(e) => setFormData({ ...formData, service: e.target.value })}
                       >
                         <option value="">Select a service</option>
-                        <option value="visa">Visa Assistance</option>
-                        <option value="work">Work Abroad</option>
-                        <option value="trade">Trade & Investment</option>
-                        <option value="talent">Talent Hub</option>
-                        <option value="marketplace">Marketplace</option>
-                        <option value="other">Other</option>
+                          <option value="visa">Visa Assistance</option>
+                          <option value="trade">Trade & Investment</option>
+                          <option value="talent">Talent Hub</option>
+                          <option value="marketplace">Marketplace</option>
+                          <option value="become_partner">Become a Partner</option>
+                          <option value="invest">Invest with Afrinexa</option>
+                          <option value="join_talent">Join Talent Hub</option>
+                          <option value="buy_marketplace">Buy From Marketplace</option>
+                          <option value="sell_marketplace">Sell to Marketplace</option>
+                          <option value="other">Other</option>
                       </select>
                     </div>
                   </div>

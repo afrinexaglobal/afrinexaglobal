@@ -58,7 +58,7 @@ const VisaAssistance = () => {
                 Expert guidance for visiting, studying, and working abroad. We handle the complexities so you can focus on your journey.
               </p>
               <div className="flex flex-wrap gap-4">
-                <Link to="/contact">
+                <Link to="/services/visa-application">
                   <Button variant="heroGold" size="xl">
                     Apply Now <ArrowRight className="w-5 h-5" />
                   </Button>
@@ -122,7 +122,7 @@ const VisaAssistance = () => {
             <p className="text-muted-foreground mb-8 max-w-2xl mx-auto">
               Contact us today for a free consultation and let our experts guide you through the process.
             </p>
-            <Link to="/contact">
+            <Link to="/services/visa-application">
               <Button variant="gold" size="xl">
                 Get Started <ArrowRight className="w-5 h-5" />
               </Button>

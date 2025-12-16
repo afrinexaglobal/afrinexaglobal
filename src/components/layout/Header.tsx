@@ -5,18 +5,15 @@ import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 
 const services = [
-  { name: "Visa Assistance", href: "/services/visa-assistance", icon: Globe },
-  { name: "Work Abroad", href: "/services/work-abroad", icon: Briefcase },
-  { name: "Trade & Investment", href: "/services/trade-investment", icon: Users },
-  { name: "Talent Hub", href: "/services/talent-hub", icon: Users },
-  { name: "Marketplace", href: "/services/marketplace", icon: ShoppingBag },
+  { name: "Visa Assistance", href: "/services/visa-assistance", icon: Globe, desc: "Immigration & visa support across African markets." },
+  { name: "Trade & Investment", href: "/services/trade-investment", icon: Briefcase, desc: "Market entry, partnerships and investment facilitation." },
+  { name: "Talent Hub", href: "/services/talent-hub", icon: Users, desc: "Recruitment, remote talent, and skill development." },
+  { name: "Marketplace", href: "/services/marketplace", icon: ShoppingBag, desc: "Buy, sell and connect with verified businesses." },
 ];
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "Services", href: "#", hasDropdown: true },
-  { name: "Countries", href: "/countries" },
-  { name: "Resources", href: "/resources" },
   { name: "Success Stories", href: "/success-stories" },
   { name: "Blog", href: "/blog" },
   { name: "Contact", href: "/contact" },
@@ -46,8 +43,8 @@ export function Header() {
       className={cn(
         "fixed top-0 left-0 right-0 z-50 transition-all duration-300",
         isScrolled
-          ? "bg-card/95 backdrop-blur-lg shadow-lg py-2"
-          : "bg-transparent py-4"
+          ? "bg-card/95 backdrop-blur-lg shadow-lg pt-4 pb-2"
+          : "bg-transparent pt-6 pb-4"
       )}
     >
       <div className="container-custom">
@@ -98,22 +95,29 @@ export function Header() {
                       )} />
                     </button>
                     
-                    {/* Dropdown */}
+                    {/* Mega Menu */}
                     <div className={cn(
-                      "absolute top-full left-0 pt-2 transition-all duration-200",
+                      "absolute top-full left-1/2 -translate-x-1/2 pt-4 transition-all duration-200",
                       isServicesOpen ? "opacity-100 visible translate-y-0" : "opacity-0 invisible -translate-y-2"
                     )}>
-                      <div className="bg-card rounded-xl shadow-xl border border-border p-2 min-w-[220px]">
-                        {services.map((service) => (
-                          <Link
-                            key={service.name}
-                            to={service.href}
-                            className="flex items-center gap-3 px-4 py-3 rounded-lg hover:bg-muted transition-colors group"
-                          >
-                            <service.icon className="w-5 h-5 text-gold group-hover:text-gold-dark transition-colors" />
-                            <span className="text-foreground font-medium">{service.name}</span>
-                          </Link>
-                        ))}
+                      <div className="bg-card rounded-xl shadow-xl border border-border p-6 w-[760px]">
+                        <div className="grid grid-cols-2 gap-4">
+                          {services.map((service) => (
+                            <Link
+                              key={service.name}
+                              to={service.href}
+                              className="group flex items-start gap-4 p-3 rounded-lg hover:bg-muted transition-colors"
+                            >
+                              <div className="w-12 h-12 rounded-lg bg-gold/10 flex items-center justify-center text-gold transition-transform group-hover:scale-105">
+                                <service.icon className="w-6 h-6" />
+                              </div>
+                              <div>
+                                <div className="text-foreground font-medium">{service.name}</div>
+                                <div className="text-sm text-muted-foreground mt-1 max-w-[260px]">{service.desc}</div>
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
                       </div>
                     </div>
                   </div>
