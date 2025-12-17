@@ -16,7 +16,6 @@ const footerLinks = {
   ],
   support: [
     { name: "Contact Us", href: "/contact" },
-    { name: "Client Portal", href: "/client-portal" },
     { name: "FAQs", href: "/contact#faq" },
     { name: "Privacy Policy", href: "/privacy" },
     { name: "Terms of Service", href: "/terms" },
@@ -61,13 +60,7 @@ export function Footer() {
           {/* Brand */}
           <div className="lg:col-span-2">
             <Link to="/" className="flex items-center gap-3 mb-6">
-              <div className="w-12 h-12 rounded-lg bg-gold flex items-center justify-center">
-                <span className="text-primary font-display font-bold text-xl">A</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-display font-bold text-xl leading-tight">Afrinexa</span>
-                <span className="text-sm leading-tight text-primary-foreground/70">Global Limited</span>
-              </div>
+              <img src="/logo.png" alt="Afrinexa Global" className="h-12 w-auto" onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }} />
             </Link>
             <p className="text-primary-foreground/70 mb-6 max-w-sm">
               Bridging Africa and the World through comprehensive visa assistance, trade facilitation, talent exchange, and cross-border marketplace solutions.
