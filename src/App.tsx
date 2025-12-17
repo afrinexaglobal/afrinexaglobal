@@ -6,14 +6,17 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { HelmetProvider } from "react-helmet-async";
 import { ScrollToTop } from "@/components/layout/ScrollToTop";
 import { WhatsAppChat } from "@/components/layout/WhatsAppChat";
+import { AuthProvider } from "@/hooks/useAuth";
 
 // Pages
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
 import SuccessStories from "./pages/SuccessStories";
 import AdminLogin from "./pages/AdminLogin";
+import Dashboard from "./pages/Dashboard";
 
 // Service Pages
 import VisaAssistance from "./pages/services/VisaAssistance";
@@ -29,36 +32,38 @@ const App = () => (
   <HelmetProvider>
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        <Toaster />
-        <Sonner />
-        <BrowserRouter>
-          <ScrollToTop />
-          <Routes>
-            <Route path="/" element={<Index />} />
-            
-            {/* Services */}
-            <Route path="/services/visa-assistance" element={<VisaAssistance />} />
-            <Route path="/services/visa-application" element={<VisaApplication />} />
-            <Route path="/services/work-abroad" element={<WorkAbroad />} />
-            <Route path="/services/trade-investment" element={<TradeInvestment />} />
-            <Route path="/services/talent-hub" element={<TalentHub />} />
-            <Route path="/services/marketplace" element={<Marketplace />} />
-            
-            {/* Main Pages */}
-            
-            
-            <Route path="/success-stories" element={<SuccessStories />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/contact" element={<Contact />} />
-            
-            {/* Admin */}
-            <Route path="/adminlogin" element={<AdminLogin />} />
-            
-            {/* Catch-all */}
-            <Route path="*" element={<NotFound />} />
-          </Routes>
-          <WhatsAppChat />
-        </BrowserRouter>
+        <AuthProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <ScrollToTop />
+            <Routes>
+              <Route path="/" element={<Index />} />
+              
+              {/* Services */}
+              <Route path="/services/visa-assistance" element={<VisaAssistance />} />
+              <Route path="/services/visa-application" element={<VisaApplication />} />
+              <Route path="/services/work-abroad" element={<WorkAbroad />} />
+              <Route path="/services/trade-investment" element={<TradeInvestment />} />
+              <Route path="/services/talent-hub" element={<TalentHub />} />
+              <Route path="/services/marketplace" element={<Marketplace />} />
+              
+              {/* Main Pages */}
+              <Route path="/success-stories" element={<SuccessStories />} />
+              <Route path="/blog" element={<Blog />} />
+              <Route path="/blog/:slug" element={<BlogPost />} />
+              <Route path="/contact" element={<Contact />} />
+              
+              {/* Admin */}
+              <Route path="/adminlogin" element={<AdminLogin />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              
+              {/* Catch-all */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+            <WhatsAppChat />
+          </BrowserRouter>
+        </AuthProvider>
       </TooltipProvider>
     </QueryClientProvider>
   </HelmetProvider>
