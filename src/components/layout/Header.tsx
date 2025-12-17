@@ -3,6 +3,7 @@ import { Link, useLocation } from "react-router-dom";
 import { Menu, X, ChevronDown, Globe, Briefcase, Users, ShoppingBag } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
+import logo from "@/assets/logo.png";
 
 const services = [
   { name: "Visa Assistance", href: "/services/visa-assistance", icon: Globe, desc: "Immigration & visa support across African markets." },
@@ -51,23 +52,7 @@ export function Header() {
         <nav className="flex items-center justify-between">
           {/* Logo */}
           <Link to="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-lg gradient-hero flex items-center justify-center">
-              <span className="text-primary-foreground font-display font-bold text-lg">A</span>
-            </div>
-            <div className="flex flex-col">
-              <span className={cn(
-                "font-display font-bold text-lg leading-tight transition-colors",
-                isScrolled ? "text-foreground" : "text-primary-foreground"
-              )}>
-                Afrinexa
-              </span>
-              <span className={cn(
-                "text-xs leading-tight transition-colors",
-                isScrolled ? "text-muted-foreground" : "text-primary-foreground/70"
-              )}>
-                Global Limited
-              </span>
-            </div>
+            <img src={logo} alt="Afrinexa Global" className="h-12 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
@@ -139,13 +124,8 @@ export function Header() {
             ))}
           </div>
 
-          {/* CTA Buttons */}
+          {/* CTA Button */}
           <div className="hidden lg:flex items-center gap-3">
-            <Link to="/client-portal">
-              <Button variant={isScrolled ? "outline" : "hero"} size="sm">
-                Client Portal
-              </Button>
-            </Link>
             <Link to="/services/visa-assistance">
               <Button variant={isScrolled ? "gold" : "heroGold"} size="sm">
                 Apply Now
@@ -215,10 +195,7 @@ export function Header() {
                 )}
               </div>
             ))}
-            <div className="pt-4 space-y-2 border-t border-border">
-              <Link to="/client-portal" className="block">
-                <Button variant="outline" className="w-full">Client Portal</Button>
-              </Link>
+            <div className="pt-4 border-t border-border">
               <Link to="/services/visa-assistance" className="block">
                 <Button variant="gold" className="w-full">Apply Now</Button>
               </Link>

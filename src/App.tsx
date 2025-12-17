@@ -13,7 +13,6 @@ import NotFound from "./pages/NotFound";
 import Contact from "./pages/Contact";
 import Blog from "./pages/Blog";
 import SuccessStories from "./pages/SuccessStories";
-import ClientPortal from "./pages/ClientPortal";
 import AdminLogin from "./pages/AdminLogin";
 
 // Service Pages
@@ -52,8 +51,7 @@ const App = () => (
             <Route path="/blog" element={<Blog />} />
             <Route path="/contact" element={<Contact />} />
             
-            {/* Portals */}
-            <Route path="/client-portal" element={<ClientPortal />} />
+            {/* Admin */}
             <Route path="/adminlogin" element={<AdminLogin />} />
             
             {/* Catch-all */}
