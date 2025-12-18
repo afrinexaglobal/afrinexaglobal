@@ -10,7 +10,7 @@ const blogPosts = [
     date: "Dec 10, 2024",
     readTime: "5 min read",
     slug: "study-abroad-2025",
-    image: null,
+    image: "https://i.ibb.co/JFc4dXc7/Afrinexa-Global-Concepts-1.jpg",
   },
   {
     title: "How African Businesses Can Trade Globally",
@@ -19,7 +19,7 @@ const blogPosts = [
     date: "Dec 8, 2024",
     readTime: "7 min read",
     slug: "african-business-global-trade",
-    image: null,
+    image: "https://i.ibb.co/8nwdPk18/Afrinexa-Global-Concepts-2-1.jpg",
   },
   {
     title: "Hiring African Talent: A Global Guide",
@@ -28,7 +28,7 @@ const blogPosts = [
     date: "Dec 5, 2024",
     readTime: "6 min read",
     slug: "hiring-african-talent",
-    image: null,
+    image: "https://i.ibb.co/chM9DmwQ/Afrinexa-Global-Concepts-3-1.jpg",
   },
 ];
 
@@ -63,11 +63,19 @@ export function FeaturedBlogSection() {
               className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/30 hover-lift animate-fade-up"
               style={{ animationDelay: `${index * 0.1}s` }}
             >
-              {/* Image Placeholder */}
+              {/* Image */}
               <div className="h-48 bg-gradient-to-br from-primary/10 to-gold/10 relative overflow-hidden">
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <span className="text-6xl opacity-30">📚</span>
-                </div>
+                {post.image ? (
+                  <img 
+                    src={post.image} 
+                    alt={post.title}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+                  />
+                ) : (
+                  <div className="absolute inset-0 flex items-center justify-center">
+                    <span className="text-6xl opacity-30">📚</span>
+                  </div>
+                )}
                 <div className="absolute top-4 left-4">
                   <span className="px-3 py-1 rounded-full bg-gold text-primary text-xs font-semibold">
                     {post.category}
