@@ -59,7 +59,7 @@ const AdminLogin = () => {
         <title>Admin Login | Afrinexa Global Limited</title>
         <meta name="robots" content="noindex, nofollow" />
       </Helmet>
-      <div className="min-h-screen gradient-hero flex items-center justify-center p-4">
+      <div className="min-h-screen gradient-hero flex items-center justify-center p-4 pt-24 lg:pt-[160px]">
         <div className="w-full max-w-md">
           {/* Glass Card */}
           <div className="bg-card/95 backdrop-blur-xl rounded-2xl border border-border shadow-2xl p-8 lg:p-10">

@@ -17,7 +17,7 @@ const offices = [
   {
     country: "Thailand",
     address: "No 66 Charansanitwong Road, Bangkok, Thailand",
-    phones: ["+66 XXX XXX XXXX"],
+    // phone removed as requested
     email: "thailand@afrinexa.com",
   },
 ];
@@ -30,11 +30,35 @@ const Contact = () => {
     service: "",
     message: "",
   });
+  const [submitting, setSubmitting] = useState(false);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast.success("Message sent! We'll get back to you within 24 hours.");
-    setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+    (async () => {
+      setSubmitting(true);
+      try {
+        const res = await fetch("https://formspree.io/f/mrezzarz", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            phone: formData.phone,
+            service: formData.service,
+            message: formData.message,
+          }),
+        });
+
+        if (!res.ok) throw new Error("Network response was not ok");
+
+        toast.success("Message sent! We'll get back to you within 24 hours.");
+        setFormData({ name: "", email: "", phone: "", service: "", message: "" });
+      } catch (err) {
+        toast.error("Failed to send message. Please try again later.");
+      } finally {
+        setSubmitting(false);
+      }
+    })();
   };
 
   return (
@@ -46,7 +70,7 @@ const Contact = () => {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 gradient-hero">
+        <section className="pt-32 lg:pt-[160px] pb-20 gradient-hero">
           <div className="container-custom">
             <div className="max-w-3xl">
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
@@ -130,8 +154,8 @@ const Contact = () => {
                       onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     />
                   </div>
-                  <Button type="submit" variant="gold" size="lg" className="w-full">
-                    Send Message <Send className="w-4 h-4" />
+                  <Button type="submit" variant="gold" size="lg" className="w-full" disabled={submitting}>
+                    {submitting ? "Sending..." : "Send Message"} <Send className="w-4 h-4" />
                   </Button>
                 </form>
               </div>
@@ -148,10 +172,12 @@ const Contact = () => {
                       </h3>
                       <div className="space-y-3">
                         <p className="text-muted-foreground text-sm">{office.address}</p>
-                        <div className="flex items-center gap-2 text-sm">
-                          <Phone className="w-4 h-4 text-gold" />
-                          <span className="text-foreground">{office.phones.join(" / ")}</span>
-                        </div>
+                        {office.phones && office.phones.length > 0 && (
+                          <div className="flex items-center gap-2 text-sm">
+                            <Phone className="w-4 h-4 text-gold" />
+                            <span className="text-foreground">{office.phones.join(" / ")}</span>
+                          </div>
+                        )}
                         <div className="flex items-center gap-2 text-sm">
                           <Mail className="w-4 h-4 text-gold" />
                           <a href={`mailto:${office.email}`} className="text-foreground hover:text-gold transition-colors">

@@ -31,7 +31,7 @@ const Marketplace = () => {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 gradient-hero relative overflow-hidden">
+        <section className="pt-32 lg:pt-[160px] pb-20 gradient-hero relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-1/2 left-1/3 w-96 h-96 bg-gold/30 rounded-full blur-3xl" />
           </div>
@@ -70,7 +70,7 @@ const Marketplace = () => {
         {/* 6.1 Digital Marketplace */}
         <section className="py-20 bg-background">
           <div className="container-custom">
-            <div className="max-w-3xl mx-auto text-center mb-8">
+            <div className="max-w-3xl mx-auto md:mx-0 text-center md:text-left mb-8">
               <h2 className="font-display text-2xl font-bold text-foreground mb-2">6.1 Digital Marketplace</h2>
               <p className="text-muted-foreground">Digital products and templates to support migration, applications and learning.</p>
             </div>
@@ -95,7 +95,7 @@ const Marketplace = () => {
         {/* 6.2 Physical & Service Marketplace */}
         <section className="py-20 bg-muted/30">
           <div className="container-custom">
-            <div className="max-w-3xl mx-auto text-center mb-8">
+            <div className="max-w-3xl mx-auto md:mx-0 text-center md:text-left mb-8">
               <h2 className="font-display text-2xl font-bold text-foreground mb-2">6.2 Physical & Service Marketplace</h2>
               <p className="text-muted-foreground">Services and physical products to support travel and events.</p>
             </div>
@@ -124,7 +124,7 @@ const Marketplace = () => {
         {/* 6.3 Business Marketplace */}
         <section className="py-20 bg-background">
           <div className="container-custom">
-            <div className="max-w-3xl mx-auto text-center mb-8">
+            <div className="max-w-3xl mx-auto md:mx-0 text-center md:text-left mb-8">
               <h2 className="font-display text-2xl font-bold text-foreground mb-2">6.3 Business Marketplace</h2>
               <p className="text-muted-foreground">Business-focused listings and verified trade services.</p>
             </div>
@@ -144,7 +144,7 @@ const Marketplace = () => {
               </div>
             </div>
 
-            <div className="text-center mt-10">
+            <div className="mt-10 md:text-left text-center">
               <div className="inline-flex gap-3">
                 <Link to="/contact">
                   <Button variant="heroGold">Buy</Button>

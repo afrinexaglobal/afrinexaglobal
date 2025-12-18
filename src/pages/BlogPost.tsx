@@ -170,7 +170,12 @@ const BlogPost = () => {
       <Header />
       <main>
         {/* Hero Featured Image */}
-        <section className="pt-32 pb-12 gradient-hero relative overflow-hidden">
+        <section className="pt-32 lg:pt-[160px] pb-12 relative overflow-hidden">
+          {post.featured_image ? (
+            <img src={post.featured_image} alt={post.title} className="absolute inset-0 w-full h-full object-cover" />
+          ) : (
+            <div className="absolute inset-0 gradient-hero" />
+          )}
           <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background/50" />
           <div className="container-custom relative z-10">
             <Link to="/blog" className="inline-flex items-center gap-2 text-primary-foreground/70 hover:text-gold transition-colors mb-6">
@@ -368,8 +373,14 @@ const BlogPost = () => {
                     to={`/blog/${related.slug}`}
                     className="group bg-card rounded-xl border border-border overflow-hidden hover:border-gold/30 transition-colors"
                   >
-                    <div className="h-40 bg-gradient-to-br from-primary/10 to-gold/10 flex items-center justify-center">
-                      <span className="text-4xl opacity-30">📚</span>
+                    <div className="h-40 relative overflow-hidden">
+                      {related.featured_image ? (
+                        <img src={related.featured_image} alt={related.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      ) : (
+                        <div className="h-40 bg-gradient-to-br from-primary/10 to-gold/10 flex items-center justify-center">
+                          <span className="text-4xl opacity-30">📚</span>
+                        </div>
+                      )}
                     </div>
                     <div className="p-5">
                       <span className="text-xs text-gold font-medium">{related.category}</span>

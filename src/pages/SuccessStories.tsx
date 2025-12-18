@@ -70,7 +70,7 @@ const SuccessStories = () => {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 gradient-hero">
+        <section className="pt-32 lg:pt-[160px] pb-20 gradient-hero">
           <div className="container-custom">
             <div className="max-w-3xl">
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">

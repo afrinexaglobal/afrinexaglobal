@@ -25,6 +25,8 @@ import TradeInvestment from "./pages/services/TradeInvestment";
 import TalentHub from "./pages/services/TalentHub";
 import Marketplace from "./pages/services/Marketplace";
 import VisaApplication from "./pages/services/VisaApplication";
+import Privacy from "./pages/Privacy";
+import Terms from "./pages/Terms";
 
 const queryClient = new QueryClient();
 
@@ -53,6 +55,8 @@ const App = () => (
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />
               <Route path="/contact" element={<Contact />} />
+              <Route path="/privacy" element={<Privacy />} />
+              <Route path="/terms" element={<Terms />} />
               
               {/* Admin */}
               <Route path="/adminlogin" element={<AdminLogin />} />

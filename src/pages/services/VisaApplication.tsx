@@ -30,8 +30,14 @@ export default function VisaApplication() {
   const onSubmit = async (data: FormValues) => {
     setSubmitting(true);
     try {
-      // TODO: wire up API call. For now just show toast and log.
-      console.log("Visa application:", data);
+      const res = await fetch("https://formspree.io/f/mwveenwg", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!res.ok) throw new Error("Network response was not ok");
+
       toast({ title: "Application received", description: "We received your visa application. Our team will be in touch." });
       reset();
     } catch (err) {

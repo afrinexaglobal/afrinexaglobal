@@ -22,7 +22,7 @@ const TalentHub = () => {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 gradient-hero relative overflow-hidden">
+        <section className="pt-32 lg:pt-[160px] pb-20 gradient-hero relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-1/3 right-1/4 w-96 h-96 bg-gold/30 rounded-full blur-3xl" />
           </div>

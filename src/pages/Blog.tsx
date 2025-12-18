@@ -15,6 +15,7 @@ interface BlogPost {
   excerpt: string | null;
   read_time: string | null;
   created_at: string;
+  featured_image?: string | null;
 }
 
 const categories = ["All", "Education", "Trade", "Talent", "Immigration", "Career"];
@@ -29,7 +30,7 @@ const Blog = () => {
     const fetchPosts = async () => {
       const { data, error } = await supabase
         .from("blog_posts")
-        .select("id, title, slug, category, excerpt, read_time, created_at")
+        .select("id, title, slug, category, excerpt, read_time, created_at, featured_image")
         .eq("status", "published")
         .order("created_at", { ascending: false });
 
@@ -56,7 +57,7 @@ const Blog = () => {
       <Header />
       <main>
         {/* Hero */}
-        <section className="pt-32 pb-20 gradient-hero">
+        <section className="pt-32 lg:pt-[160px] pb-20 gradient-hero">
           <div className="container-custom">
             <div className="max-w-3xl">
               <h1 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold text-primary-foreground mb-6">
@@ -127,9 +128,13 @@ const Blog = () => {
                     className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-gold/30 hover-lift"
                   >
                     <div className="h-48 bg-gradient-to-br from-primary/10 to-gold/10 relative overflow-hidden">
-                      <div className="absolute inset-0 flex items-center justify-center">
-                        <span className="text-6xl opacity-30">📚</span>
-                      </div>
+                      {post.featured_image ? (
+                        <img src={post.featured_image} alt={post.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+                      ) : (
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-6xl opacity-30">📚</span>
+                        </div>
+                      )}
                       <div className="absolute top-4 left-4">
                         <span className="px-3 py-1 rounded-full bg-gold text-primary text-xs font-semibold">
                           {post.category}
