@@ -10,7 +10,7 @@ const Terms = () => {
         <meta name="description" content="Terms of Service for Afrinexa Global Limited describing user responsibilities and site terms." />
       </Helmet>
       <Header />
-      <main className="py-24">
+      <main className="pt-32 pb-24">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-3xl font-display font-bold mb-6">Terms of Service</h1>

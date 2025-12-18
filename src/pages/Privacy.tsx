@@ -10,7 +10,7 @@ const Privacy = () => {
         <meta name="description" content="Privacy policy for Afrinexa Global Limited describing how we collect and handle personal data." />
       </Helmet>
       <Header />
-      <main className="py-24">
+      <main className="pt-32 pb-24">
         <div className="container-custom">
           <div className="max-w-3xl mx-auto">
             <h1 className="text-3xl font-display font-bold mb-6">Privacy Policy</h1>

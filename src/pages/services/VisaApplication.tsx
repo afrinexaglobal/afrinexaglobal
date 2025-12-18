@@ -54,7 +54,7 @@ export default function VisaApplication() {
         <meta name="description" content="Submit your visa application to Afrinexa. Complete the dynamic form and our team will follow up." />
       </Helmet>
       <Header />
-      <main className="pt-32 pb-20">
+      <main className="pt-40 pb-20">
         <div className="container-custom">
           <div className="max-w-4xl mx-auto">
             <div className="p-8 rounded-2xl bg-card border border-border shadow-sm">

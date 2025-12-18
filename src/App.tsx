@@ -27,6 +27,7 @@ import Marketplace from "./pages/services/Marketplace";
 import VisaApplication from "./pages/services/VisaApplication";
 import Privacy from "./pages/Privacy";
 import Terms from "./pages/Terms";
+import About from "./pages/About";
 
 const queryClient = new QueryClient();
 
@@ -51,6 +52,7 @@ const App = () => (
               <Route path="/services/marketplace" element={<Marketplace />} />
               
               {/* Main Pages */}
+              <Route path="/about" element={<About />} />
               <Route path="/success-stories" element={<SuccessStories />} />
               <Route path="/blog" element={<Blog />} />
               <Route path="/blog/:slug" element={<BlogPost />} />

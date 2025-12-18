@@ -116,7 +116,7 @@ const BlogPost = () => {
     return (
       <>
         <Header />
-        <main className="pt-32 pb-24 min-h-screen">
+        <main className="pt-40 pb-24 min-h-screen">
           <div className="container-custom">
             <div className="animate-pulse space-y-8">
               <div className="h-64 bg-muted rounded-2xl" />
@@ -134,7 +134,7 @@ const BlogPost = () => {
     return (
       <>
         <Header />
-        <main className="pt-32 pb-24 min-h-screen">
+        <main className="pt-40 pb-24 min-h-screen">
           <div className="container-custom text-center">
             <h1 className="font-display text-4xl font-bold text-foreground mb-4">Post Not Found</h1>
             <p className="text-muted-foreground mb-8">The article you're looking for doesn't exist.</p>
