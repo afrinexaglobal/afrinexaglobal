@@ -1,6 +1,8 @@
+import { useState } from "react";
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram, Youtube, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram, Youtube, ArrowRight, Loader2 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useToast } from "@/hooks/use-toast";
 
 const footerLinks = {
   services: [
@@ -30,12 +32,59 @@ const socialLinks = [
 ];
 
 export function Footer() {
+  const [email, setEmail] = useState("");
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const { toast } = useToast();
+
+  const handleSubscribe = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!email) {
+      toast({
+        title: "Error",
+        description: "Please enter your email address",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xpqapoww", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Subscribed!",
+          description: "Thank you for subscribing to our newsletter.",
+        });
+        setEmail("");
+      } else {
+        throw new Error("Subscription failed");
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Failed to subscribe. Please try again later.",
+        variant: "destructive",
+      });
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <footer className="bg-primary text-primary-foreground">
       {/* Newsletter Section */}
       <div className="border-b border-primary-foreground/10">
         <div className="container-custom py-12">
-          <div className="flex flex-col lg:flex-row items-center justify-between gap-6">
+          <form onSubmit={handleSubscribe} className="flex flex-col lg:flex-row items-center justify-between gap-6">
             <div className="text-center lg:text-left">
               <h3 className="font-display text-2xl font-bold mb-2">Stay Updated</h3>
               <p className="text-primary-foreground/70">Get the latest visa updates, trade opportunities, and career insights.</p>
@@ -44,13 +93,15 @@ export function Footer() {
               <input
                 type="email"
                 placeholder="Enter your email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="px-4 py-3 rounded-lg bg-primary-foreground/10 border border-primary-foreground/20 text-primary-foreground placeholder:text-primary-foreground/50 focus:outline-none focus:border-gold w-full sm:w-80"
               />
-              <Button variant="heroGold" size="lg" className="whitespace-nowrap">
-                Subscribe <ArrowRight className="w-4 h-4" />
+              <Button type="submit" variant="heroGold" size="lg" className="whitespace-nowrap" disabled={isSubmitting}>
+                {isSubmitting ? <Loader2 className="w-4 h-4 animate-spin" /> : <>Subscribe <ArrowRight className="w-4 h-4" /></>}
               </Button>
             </div>
-          </div>
+          </form>
         </div>
       </div>
 
