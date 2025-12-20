@@ -56,7 +56,7 @@ export function Header() {
             <img
               src="https://i.ibb.co/hR9wpJjg/Afrinexa.png"
               alt="Afrinexa Global"
-              className="w-[102px] h-[55px] lg:w-[203px] lg:h-[109px] max-w-full object-contain"
+              className="w-[112px] h-[60px] lg:w-[203px] lg:h-[109px] max-w-full object-contain"
             />
           </Link>
 

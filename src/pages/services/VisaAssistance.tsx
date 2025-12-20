@@ -4,6 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import { Globe, GraduationCap, Briefcase, FileText, ArrowRight, CheckCircle, Phone } from "lucide-react";
 import { Helmet } from "react-helmet-async";
+import { VisaRequirementsAccordion } from "@/components/visa/VisaRequirementsAccordion";
 
 const visaServices = [
   {
@@ -113,6 +114,8 @@ const VisaAssistance = () => {
           </div>
         </section>
 
+        {/* Visa Requirements by Region */}
+        <VisaRequirementsAccordion />
         {/* CTA */}
         <section className="py-20 bg-muted/30">
           <div className="container-custom text-center">
