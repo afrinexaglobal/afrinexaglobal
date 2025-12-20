@@ -32,7 +32,7 @@ const pillars = [
     title: "Marketplace",
     description: "Cross-border e-commerce platform connecting African products to the world and global goods to Africa.",
     href: "/services/marketplace",
-    features: ["African Goods", "Global Products", "B2B Trading", "Secure Payments"],
+    features: ["Land, Landed Properties", "Health and Fitness", "B2B Trading", "Secure Payments"],
     gradient: "from-green-600 to-green-500",
   },
 ];
