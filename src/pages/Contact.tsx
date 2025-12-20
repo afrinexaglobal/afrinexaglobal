@@ -12,13 +12,12 @@ const offices = [
     country: "Nigeria",
     address: "No 44 University Road, Tanke, Ilorin, Kwara State, Nigeria",
     phones: ["+234 815 102 2244", "+234 707 775 4045"],
-    email: "nigeria@afrinexa.com",
+    email: "afrinexagloballtd1@gmail.com",
   },
   {
     country: "Thailand",
     address: "No 66 Charansanitwong Road, Bangkok, Thailand",
-    // phone removed as requested
-    email: "thailand@afrinexa.com",
+    email: "afrinexagloballtd1@gmail.com",
   },
 ];
 

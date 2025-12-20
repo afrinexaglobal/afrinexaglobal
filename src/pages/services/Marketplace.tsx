@@ -129,7 +129,7 @@ const Marketplace = () => {
               <p className="text-muted-foreground">Business-focused listings and verified trade services.</p>
             </div>
 
-            <div className="grid md:grid-cols-3 gap-6">
+            <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6">
               <div className="p-6 rounded-2xl bg-card border border-border">
                 <h3 className="font-medium text-foreground mb-2">Franchise Opportunities</h3>
                 <p className="text-sm text-muted-foreground">Explore franchising and partnership opportunities across regions.</p>
@@ -141,6 +141,14 @@ const Marketplace = () => {
               <div className="p-6 rounded-2xl bg-card border border-border">
                 <h3 className="font-medium text-foreground mb-2">Verified Suppliers</h3>
                 <p className="text-sm text-muted-foreground">Find vetted suppliers and B2B partners for your business.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Land and Landed Properties</h3>
+                <p className="text-sm text-muted-foreground">Access real estate opportunities and property listings.</p>
+              </div>
+              <div className="p-6 rounded-2xl bg-card border border-border">
+                <h3 className="font-medium text-foreground mb-2">Health and Fitness</h3>
+                <p className="text-sm text-muted-foreground">Wellness products and fitness services for healthy living.</p>
               </div>
             </div>
 

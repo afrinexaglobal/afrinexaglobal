@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram, ArrowRight } from "lucide-react";
+import { MapPin, Phone, Mail, Facebook, Twitter, Linkedin, Instagram, Youtube, ArrowRight } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 const footerLinks = {
@@ -26,6 +26,7 @@ const socialLinks = [
   { name: "Twitter", icon: Twitter, href: "#" },
   { name: "LinkedIn", icon: Linkedin, href: "#" },
   { name: "Instagram", icon: Instagram, href: "#" },
+  { name: "YouTube", icon: Youtube, href: "https://www.youtube.com/channel/UCnBQoCBc4P75MA91suenN3g" },
 ];
 
 export function Footer() {
@@ -145,9 +146,9 @@ export function Footer() {
                 <Phone className="w-4 h-4" />
                 +234 815 102 2244
               </a>
-              <a href="mailto:info@afrinexa.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-gold transition-colors text-sm">
+              <a href="mailto:afrinexagloballtd1@gmail.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-gold transition-colors text-sm">
                 <Mail className="w-4 h-4" />
-                info@afrinexa.com
+                afrinexagloballtd1@gmail.com
               </a>
             </div>
           </div>
