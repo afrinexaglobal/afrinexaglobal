@@ -58,7 +58,7 @@ const AdminLogin = () => {
         await signOut();
       }
     } catch (error) {
-      console.error("Auth error:", error);
+      // Auth errors are not logged to console in production for security
       toast.error("Authentication failed. Please try again.");
       await signOut();
     } finally {
