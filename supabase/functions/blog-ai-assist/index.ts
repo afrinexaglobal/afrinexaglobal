@@ -1,10 +1,22 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import DOMPurify from "https://esm.sh/isomorphic-dompurify@2.15.0";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type",
 };
+
+// Sanitize HTML content to prevent XSS attacks
+function sanitizeHtml(html: string): string {
+  return DOMPurify.sanitize(html, {
+    ALLOWED_TAGS: ['h2', 'h3', 'h4', 'p', 'ul', 'ol', 'li', 'strong', 'em', 'a', 'br', 'span'],
+    ALLOWED_ATTR: ['href', 'target', 'rel', 'class'],
+    ALLOW_DATA_ATTR: false,
+    FORBID_TAGS: ['script', 'style', 'iframe', 'object', 'embed', 'form', 'input', 'button'],
+    FORBID_ATTR: ['onerror', 'onload', 'onclick', 'onmouseover', 'onfocus', 'onblur', 'onsubmit']
+  });
+}
 
 serve(async (req) => {
   // Handle CORS preflight requests
@@ -156,7 +168,11 @@ Respond in JSON format:
         const jsonMatch = aiContent.match(/\{[\s\S]*\}/);
         if (jsonMatch) {
           const parsed = JSON.parse(jsonMatch[0]);
-          return new Response(JSON.stringify(parsed), {
+          // Sanitize title and excerpt to prevent XSS
+          return new Response(JSON.stringify({
+            title: DOMPurify.sanitize(parsed.title, { ALLOWED_TAGS: [] }),
+            excerpt: DOMPurify.sanitize(parsed.excerpt, { ALLOWED_TAGS: [] })
+          }), {
             headers: { ...corsHeaders, "Content-Type": "application/json" },
           });
         }
@@ -164,12 +180,19 @@ Respond in JSON format:
         // If JSON parsing fails, return the raw content
       }
       return new Response(
-        JSON.stringify({ title: title, excerpt: aiContent.slice(0, 160) }),
+        JSON.stringify({ 
+          title: DOMPurify.sanitize(title, { ALLOWED_TAGS: [] }), 
+          excerpt: DOMPurify.sanitize(aiContent.slice(0, 160), { ALLOWED_TAGS: [] })
+        }),
         { headers: { ...corsHeaders, "Content-Type": "application/json" } }
       );
     }
 
-    return new Response(JSON.stringify({ content: aiContent }), {
+    // Sanitize HTML content before returning
+    const sanitizedContent = sanitizeHtml(aiContent);
+    console.log(`Content sanitized for user ${user.id}`);
+
+    return new Response(JSON.stringify({ content: sanitizedContent }), {
       headers: { ...corsHeaders, "Content-Type": "application/json" },
     });
   } catch (error) {
