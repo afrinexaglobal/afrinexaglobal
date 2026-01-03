@@ -94,16 +94,40 @@ const BlogPost = () => {
     e.preventDefault();
     if (!post) return;
 
+    // Client-side validation
+    const trimmedName = commentForm.name.trim();
+    const trimmedEmail = commentForm.email.trim();
+    const trimmedComment = commentForm.comment.trim();
+
+    // Validate name length (2-100 characters)
+    if (trimmedName.length < 2 || trimmedName.length > 100) {
+      toast.error("Name must be between 2 and 100 characters");
+      return;
+    }
+
+    // Validate email format
+    const emailRegex = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}$/;
+    if (!emailRegex.test(trimmedEmail) || trimmedEmail.length > 255) {
+      toast.error("Please enter a valid email address");
+      return;
+    }
+
+    // Validate comment length (10-2000 characters)
+    if (trimmedComment.length < 10 || trimmedComment.length > 2000) {
+      toast.error("Comment must be between 10 and 2000 characters");
+      return;
+    }
+
     setSubmittingComment(true);
     const { error } = await supabase.from("comments").insert({
       post_id: post.id,
-      name: commentForm.name,
-      email: commentForm.email,
-      comment: commentForm.comment,
+      name: trimmedName,
+      email: trimmedEmail,
+      comment: trimmedComment,
     });
 
     if (error) {
-      toast.error("Failed to submit comment");
+      toast.error("Failed to submit comment. Please try again.");
     } else {
       toast.success("Comment submitted! It will appear after approval.");
       setCommentForm({ name: "", email: "", comment: "" });
