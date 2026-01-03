@@ -5,6 +5,7 @@ import { Lock, ArrowRight, Eye, EyeOff } from "lucide-react";
 import { Helmet } from "react-helmet-async";
 import { toast } from "sonner";
 import { useAuth } from "@/hooks/useAuth";
+import { supabase } from "@/integrations/supabase/client";
 import logo from "@/assets/logo.png";
 
 const AdminLogin = () => {
@@ -13,7 +14,7 @@ const AdminLogin = () => {
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
-  const { user, isAdmin, loading: authLoading, signIn } = useAuth();
+  const { user, isAdmin, loading: authLoading, signIn, signOut } = useAuth();
 
   useEffect(() => {
     if (!authLoading && user && isAdmin) {
@@ -25,32 +26,44 @@ const AdminLogin = () => {
     e.preventDefault();
     setLoading(true);
 
-    const { error } = await signIn(email, password);
+    try {
+      const { error } = await signIn(email, password);
 
-    if (error) {
-      toast.error(error.message || "Invalid credentials");
-      setLoading(false);
-      return;
-    }
-
-    // Wait for auth state to update and check admin role
-    setTimeout(async () => {
-      const { data: { user } } = await import("@/integrations/supabase/client").then(m => m.supabase.auth.getUser());
-      if (user) {
-        const { data: isAdminUser } = await import("@/integrations/supabase/client").then(m => 
-          m.supabase.rpc("has_role", { _user_id: user.id, _role: "admin" })
-        );
-        
-        if (isAdminUser) {
-          toast.success("Welcome back!");
-          navigate("/dashboard");
-        } else {
-          toast.error("Access denied. Admin privileges required.");
-          await import("@/integrations/supabase/client").then(m => m.supabase.auth.signOut());
-        }
+      if (error) {
+        toast.error(error.message || "Invalid credentials");
+        return;
       }
+
+      // Get fresh user session immediately after sign in
+      const { data: { user: freshUser }, error: userError } = await supabase.auth.getUser();
+      if (userError || !freshUser) {
+        throw new Error("Failed to verify user session");
+      }
+
+      // Check admin role immediately - no delay
+      const { data: isAdminUser, error: roleError } = await supabase.rpc("has_role", {
+        _user_id: freshUser.id,
+        _role: "admin"
+      });
+
+      if (roleError) {
+        throw new Error("Failed to verify admin role");
+      }
+
+      if (isAdminUser) {
+        toast.success("Welcome back!");
+        navigate("/dashboard");
+      } else {
+        toast.error("Access denied. Admin privileges required.");
+        await signOut();
+      }
+    } catch (error) {
+      console.error("Auth error:", error);
+      toast.error("Authentication failed. Please try again.");
+      await signOut();
+    } finally {
       setLoading(false);
-    }, 500);
+    }
   };
 
   return (
