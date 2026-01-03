@@ -29,7 +29,7 @@ const Terms = () => {
             <p className="mb-4 text-muted-foreground">These terms are governed by the laws of the jurisdiction in which Afrinexa Global operates.</p>
 
             <h2 className="text-xl font-semibold mt-6 mb-3">Contact</h2>
-            <p className="mb-4 text-muted-foreground">Questions about these terms: info@afrinexa.com.</p>
+            <p className="mb-4 text-muted-foreground">Questions about these terms: info@afrinexaglobal.com.</p>
           </div>
         </div>
       </main>
