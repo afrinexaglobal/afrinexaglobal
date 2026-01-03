@@ -1,4 +1,5 @@
 import { serve } from "https://deno.land/std@0.168.0/http/server.ts";
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -12,6 +13,55 @@ serve(async (req) => {
   }
 
   try {
+    // Verify authentication
+    const authHeader = req.headers.get("Authorization");
+    if (!authHeader) {
+      console.error("Missing authorization header");
+      return new Response(
+        JSON.stringify({ error: "Missing authorization header" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Create Supabase client with user's auth token
+    const supabaseClient = createClient(
+      Deno.env.get("SUPABASE_URL") ?? "",
+      Deno.env.get("SUPABASE_ANON_KEY") ?? "",
+      { global: { headers: { Authorization: authHeader } } }
+    );
+
+    // Verify the user is authenticated
+    const { data: { user }, error: authError } = await supabaseClient.auth.getUser();
+    if (authError || !user) {
+      console.error("Authentication failed:", authError?.message);
+      return new Response(
+        JSON.stringify({ error: "Invalid or expired token" }),
+        { status: 401, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    // Verify admin role using the has_role function
+    const { data: isAdmin, error: roleError } = await supabaseClient.rpc("has_role", {
+      _user_id: user.id,
+      _role: "admin"
+    });
+
+    if (roleError) {
+      console.error("Role check failed:", roleError.message);
+      return new Response(
+        JSON.stringify({ error: "Failed to verify permissions" }),
+        { status: 500, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
+    if (!isAdmin) {
+      console.error(`User ${user.id} attempted to access AI assist without admin role`);
+      return new Response(
+        JSON.stringify({ error: "Insufficient permissions. Admin access required." }),
+        { status: 403, headers: { ...corsHeaders, "Content-Type": "application/json" } }
+      );
+    }
+
     const { type, title, content } = await req.json();
     const LOVABLE_API_KEY = Deno.env.get("LOVABLE_API_KEY");
 
@@ -59,7 +109,7 @@ Respond in JSON format:
 }`;
     }
 
-    console.log(`Processing AI request: type=${type}`);
+    console.log(`AI request from user ${user.id}: type=${type}, timestamp=${new Date().toISOString()}`);
 
     const response = await fetch("https://ai.gateway.lovable.dev/v1/chat/completions", {
       method: "POST",
@@ -99,7 +149,7 @@ Respond in JSON format:
     const data = await response.json();
     const aiContent = data.choices[0]?.message?.content || "";
 
-    console.log("AI response received successfully");
+    console.log(`AI response received successfully for user ${user.id}`);
 
     if (type === "headline") {
       try {
