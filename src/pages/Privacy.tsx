@@ -28,10 +28,10 @@ const Privacy = () => {
             <p className="mb-4 text-muted-foreground">We may share information with service providers (e.g., hosting, analytics) and when required by law. We do not sell personal data.</p>
 
             <h2 className="text-xl font-semibold mt-6 mb-3">Your Rights</h2>
-            <p className="mb-4 text-muted-foreground">Depending on your jurisdiction, you may have rights to access, correct, or delete your data. Contact us at info@afrinexa.com for requests.</p>
+            <p className="mb-4 text-muted-foreground">Depending on your jurisdiction, you may have rights to access, correct, or delete your data. Contact us at info@afrinexaglobal.com for requests.</p>
 
             <h2 className="text-xl font-semibold mt-6 mb-3">Contact</h2>
-            <p className="mb-4 text-muted-foreground">If you have questions about this policy, please contact us at info@afrinexa.com.</p>
+            <p className="mb-4 text-muted-foreground">If you have questions about this policy, please contact us at info@afrinexaglobal.com.</p>
           </div>
         </div>
       </main>

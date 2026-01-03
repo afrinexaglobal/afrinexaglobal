@@ -197,9 +197,9 @@ export function Footer() {
                 <Phone className="w-4 h-4" />
                 +234 815 102 2244
               </a>
-              <a href="mailto:afrinexagloballtd1@gmail.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-gold transition-colors text-sm">
+              <a href="mailto:info@afrinexaglobal.com" className="flex items-center gap-2 text-primary-foreground/70 hover:text-gold transition-colors text-sm">
                 <Mail className="w-4 h-4" />
-                afrinexagloballtd1@gmail.com
+                info@afrinexaglobal.com
               </a>
             </div>
           </div>

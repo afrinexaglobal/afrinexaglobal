@@ -49,11 +49,11 @@ export function CTASection() {
               <span>+234 815 102 2244</span>
             </a>
             <a
-              href="mailto:info@afrinexa.com"
+              href="mailto:info@afrinexaglobal.com"
               className="flex items-center gap-2 text-primary-foreground/80 hover:text-gold transition-colors"
             >
               <Mail className="w-5 h-5" />
-              <span>info@afrinexa.com</span>
+              <span>info@afrinexaglobal.com</span>
             </a>
           </div>
         </div>
